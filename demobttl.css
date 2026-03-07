@@ -1,0 +1,251 @@
+body{
+    background-color: rgb(246, 246, 246);
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+
+.topbar{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 40px;
+}
+.logo{
+    font-size: 40px;
+    font-weight: bold;
+    display: flex
+}
+.multi{
+    color: rgb(255, 225, 73);
+    background: rgb(61, 61, 61);
+    padding: 4px 8px ;
+}
+.shop{
+    color:  rgb(61, 61, 61);
+    background: rgb(255, 225, 73);
+    padding: 4px 8px ;
+}
+
+.search input{
+    padding: 10px;
+    font-size: 16px;
+    min-width: 250px;
+    border: 1px solid black;
+    border-radius: unset;
+}
+.custom-service{
+    text-align: right;
+}
+.text-muted{
+    color: rgb(142, 142, 142);
+}
+.nav ul{
+    display: flex;
+    gap: 10px;
+    list-style: none;
+    background-color: rgb(61, 61, 61);
+    color: white;
+}
+.nav ul li{
+    padding: 20px;
+    font-size: 16px;
+    color: white;
+}
+.nav ul li:first-child{
+    background: rgb(255, 225, 73);
+    color: rgb(61, 61, 61);
+}
+.carousels img{
+    object-fit: cover;
+    width: 100%;
+    height: 100%;
+}
+.top,.bottom{
+    height: 170px;
+    overflow: hidden;
+}
+.carousels{
+    display: flex;
+    margin: 0 40px;
+    gap: 10px;
+}
+.carousels .banner-left{
+    flex: 2;
+    height: 350px;
+    position: relative;
+}
+.carousels .banner-right{
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 350px; 
+}
+.content-image{
+    position: absolute;
+    top: 0px;
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    text-align: center;
+    flex-direction: column;
+    align-items: center;
+    height: 100%;
+    background: #00000059;
+    color: white;
+}
+.content-image .text{
+    display: flex;
+    flex-direction: column;
+}
+.shopnow{
+    border: 1px solid white;
+    padding: 10px;
+    transition: .5s ease;
+}
+.shopnow:hover{
+    background-color: white;
+    color: black;
+}
+
+.yellow{
+    color: black;
+    border-color: rgb(255, 225, 73);
+    background-color: rgb(255, 225, 73);
+}
+.top:hover img,.bottom:hover img{
+    transition: .5s;
+    transform: scale(1.2) rotate(5deg);
+}
+
+.features{
+    display: flex;
+    margin: 20px 40px;
+    justify-content: space-between;
+    gap: 10px;
+}
+
+.feature {
+    flex: 1;
+}
+.features div{
+    background: white;
+    padding: 20px 40px;
+    font-size: 18px;
+    font-weight: 500;
+}
+.feature i{
+    color: rgb(255, 225, 73);
+}
+
+.categorie{
+    margin: 0 40px;
+    position: relative;
+    display: flex;
+}
+
+.categorie h2::after{
+    content: "";
+    position: absolute;
+    border-top: 2px dashed black;
+    top: 50%;
+    width: 100%;
+    margin-left: 10px;
+}
+
+.items{
+    margin: 0 40px;
+    justify-content: space-between;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+.items .cat-item{
+    flex: 1;
+    flex-basis: 25%;
+    display: flex;
+    background: white;
+}
+.image-item{
+    width: 100px;
+    height: 100px;
+}
+.cat-item:hover{
+    background: rgb(255, 225, 73);
+}
+.image-item img{
+    object-fit: cover;
+    width: 100%;
+    height: 100%;
+}
+.details-category{
+    padding-left: 20px;
+}
+.list-product{
+    margin: 0 40px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+.product-item{
+    flex: 1;
+    flex-basis: 21%;
+}
+.product-img{
+    width: 100%;
+    aspect-ratio: 1/1;
+}
+.product-img img{
+    object-fit: cover;
+    width: 100%;
+    height: 100%;
+}
+
+.product-item{
+    background-color: white;
+    min-height: 350px;
+}
+.detail-product{
+    text-align: center;
+}
+.detail-product a{
+    text-decoration: none;
+    font-weight: 500;
+    color: black;
+}
+.detail-product del{
+    font-size: 13px;
+}
+.rating i{
+    color: rgb(255, 225, 73);
+}
+.product-img{
+    position: relative;
+}
+.mask{
+    position: absolute;
+    top: 0;
+    background: #ffffff5c;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.product-action {
+    display: flex;
+    gap: 10px;
+}
+.product-action a{
+    color: black;
+    border: 2px solid black;
+    padding: 7px;
+    width: 20px;
+    height: 20px;
+    text-align: center;
+    margin-top: 100px;
+    transition: .5s;
+    opacity: 0;
+}

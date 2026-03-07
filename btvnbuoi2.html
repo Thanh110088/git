@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <title>Biểu mẫu đăng ký</title>
+    <style>
+        /* --- CSS LÀM ĐẸP GIỐNG Y HỆT ẢNH MẪU --- */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f9; /* Màu nền ngoài trang */
+            display: flex;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        .container {
+            background-color: #fff;
+            width: 550px;
+            padding: 30px 40px;
+            box-shadow: 0 0 15px rgba(0,0,0,0.05); /* Đổ bóng nhẹ cho form */
+        }
+
+        /* Tiêu đề dùng font có chân */
+        h2, h3 {
+            text-align: center;
+            font-family: "Times New Roman", Times, serif; 
+            color: #333;
+            margin-bottom: 30px;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        /* Chia 2 cột cho SĐT và Ngày sinh */
+        .row {
+            display: flex;
+            justify-content: space-between;
+        }
+        .row .form-group {
+            width: 45%;
+        }
+
+        label {
+            display: block;
+            font-weight: bold;
+            font-size: 13px;
+            margin-bottom: 10px;
+            color: #333;
+        }
+
+        /* Ô nhập liệu chỉ có gạch chân (Style Material) */
+        input[type="text"], input[type="date"], select {
+            width: 100%;
+            padding: 5px 0 10px 0;
+            border: none;
+            border-bottom: 1px solid #ccc; /* Chỉ giữ lại viền dưới */
+            outline: none;
+            font-size: 14px;
+            color: #555;
+            background-color: transparent;
+        }
+
+        /* Đổi màu viền dưới khi click vào ô nhập */
+        input[type="text"]:focus, input[type="date"]:focus, select:focus {
+            border-bottom: 2px solid #8c52ff; 
+        }
+
+        .gender-group {
+            display: flex;
+            gap: 30px;
+            margin-top: 10px;
+            font-size: 14px;
+        }
+
+        /* Dòng thông báo lỗi màu đỏ, căn phải */
+        .error {
+            color: #ff3333;
+            font-size: 12px;
+            text-align: right;
+            display: none;
+            margin-top: 5px;
+        }
+
+        /* Nút bấm */
+        .button-group {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 35px;
+        }
+
+        button {
+            width: 48%;
+            padding: 12px;
+            cursor: pointer;
+            font-weight: bold;
+            font-size: 14px;
+            text-align: center;
+            border-radius: 2px;
+            transition: 0.3s;
+        }
+
+        #btn-reset {
+            background-color: #fff;
+            color: #8c52ff;
+            border: 1px solid #8c52ff;
+        }
+
+        #btn-register {
+            background-color: #8c52ff;
+            color: #fff;
+            border: none;
+        }
+
+        /* Đường kẻ ngang phân cách */
+        hr {
+            border: 0;
+            border-top: 1px solid #ccc;
+            margin: 30px 0;
+        }
+
+        /* --- Bảng dữ liệu --- */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            text-align: center;
+            font-size: 13px;
+        }
+
+        th {
+            background-color: #8c52ff; /* Màu nền tím cho Header */
+            color: white;
+            padding: 12px;
+            font-weight: normal;
+        }
+
+        td {
+            padding: 12px;
+            border: none; /* Bỏ viền dọc của ô */
+        }
+
+        /* Dòng chẵn lẻ khác màu nhau */
+        tbody tr:nth-child(odd) {
+            background-color: #ffffff;
+        }
+        
+        tbody tr:nth-child(even) {
+            background-color: #f0ebff; /* Màu tím siêu nhạt cho dòng chẵn */
+        }
+
+        /* Nút Hủy đăng ký */
+        .btn-delete {
+            color: #666;
+            text-decoration: none;
+            cursor: pointer;
+            background: none;
+            border: none;
+            font-size: 13px;
+            padding: 0;
+        }
+        .btn-delete:hover {
+            text-decoration: underline;
+            color: red;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h2>BIỂU MẪU ĐĂNG KÝ</h2>
+        
+        <div class="form-group">
+            <label>Họ và tên</label>
+            <input type="text" id="name" placeholder="Enter full name">
+            <div class="error" id="err-name">Họ và tên không hợp lệ</div>
+        </div>
+
+        <div class="form-group">
+            <label>Email</label>
+            <input type="text" id="email" placeholder="Enter email address">
+            <div class="error" id="err-email">Email không hợp lệ</div>
+        </div>
+
+        <div class="row">
+            <div class="form-group">
+                <label>Số điện thoại</label>
+                <input type="text" id="phone" placeholder="Enter phone number">
+                <div class="error" id="err-phone">Số điện thoại không hợp lệ</div>
+            </div>
+            <div class="form-group">
+                <label>Ngày sinh</label>
+                <input type="date" id="dob">
+                <div class="error" id="err-dob">Ngày sinh không hợp lệ</div>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label>Giới tính</label>
+            <div class="gender-group">
+                <label><input type="radio" name="gender" value="Nam" checked> Nam</label>
+                <label><input type="radio" name="gender" value="Nữ"> Nữ</label>
+            </div>
+            <div class="error" id="err-gender">Giới tính không được để trống</div>
+        </div>
+
+        <div class="form-group">
+            <label>Chọn khóa học</label>
+            <select id="course">
+                <option value="">[ CHỌN KHÓA HỌC ]</option>
+                <option value="Lập trình web">Lập trình web</option>
+                <option value="Lập trình di động">Lập trình di động</option>
+                <option value="Thiết kế web">Thiết kế web</option>
+                <option value="Cơ sở dữ liệu">Cơ sở dữ liệu</option>
+            </select>
+            <div class="error" id="err-course">Khóa học không được để trống</div>
+        </div>
+
+        <div class="button-group">
+            <button type="button" id="btn-reset">NHẬP LẠI</button>
+            <button type="button" id="btn-register">ĐĂNG KÝ</button>
+        </div>
+
+        <hr>
+
+        <h3>ĐÃ ĐĂNG KÝ</h3>
+        <table id="reg-table">
+            <thead>
+                <tr>
+                    <th>STT</th>
+                    <th>Môn học</th>
+                    <th>Giảng viên</th>
+                    <th>Tác vụ</th>
+                </tr>
+            </thead>
+            <tbody id="table-body">
+                <tr>
+                    <td>1</td>
+                    <td>Lập trình web</td>
+                    <td>Nguyễn Văn A</td>
+                    <td><button class="btn-delete" onclick="deleteRow(this)">Hủy đăng ký</button></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+           const btnRegister=document.getElementById("btn-register");
+           const btnReset=document.getElementById("btn-reset");
+                 btnRegister.addEventListener("click",function(){
+                    let name=document.getElementById("name").value.trim();
+                    let email=document.getElementById("email").value.trim();
+                    let phone=document.getElementById("phone").value.trim();
+                    let dob=document.getElementById("dob").value;
+                    let course=document.getElementById("course").value;
+
+                    let isValid=true;
+                    //kiểm tra regex
+                        var mauTen=/^.+$/;
+                    if(mauTen.test(name)){
+                        document.getElementById("err-name").style.display="none";
+
+                    }else{
+                        document.getElementById("err-name").style.display="block";
+                        isValid=false;
+                    }
+                        var mauEmail=/^\w+@\w+(\.\w+)+$/;
+                    if(mauEmail.test(email)){
+                        document.getElementById("err-email").style.display="none";
+                    }else{
+                        document.getElementById("err-email").style.display="block";
+                        isValid=false;
+                    }
+                        var mauPhone=/^\d{1,10}$/;
+                    if(mauPhone.test(phone)){
+                        document.getElementById("err-phone").style.display="none";
+                    }else{
+                        document.getElementById("err-phone").style.display="block";
+                        isValid=false;
+                    }
+                    if(dob!==""){
+                        document.getElementById("err-dob").style.display="none";
+
+                    }else{
+                        document.getElementById("err-dob").style.display="block";
+                        isValid=false;
+                    }
+                    if(course!==""){
+                        document.getElementById("err-course").style.display="none";
+                    }else{
+                        document.getElementById("err-course").style.display="block";
+                        isValid=false;
+                    }
+                //kiểm tra trùng lặp khóa học
+                if(isValid){
+                    const tbody=document.getElementById("table-body");
+                    let rows=tbody.getElementsByTagName("tr");
+                    for(let i=0;i<rows.length;i++){
+                        if(rows[i].cells[1].innerText===course){
+                            alert("Khóa học này đã được đăng kí bên dưới !");
+                            isValid=false;
+                            break;
+                        }
+                    }
+                }
+
+                if(isValid){
+                    let rowhtml=`
+                    <tr>
+                        <td>STT</td>
+                        <td>${course}</td>
+                        <td>Nguyễn Văn A</td>
+                        <td><button class="btn-delete" onclick="deleteRow(this)">Hủy đăng kí</button></td>
+                    </tr>
+
+                    `;
+                
+
+                let tbody=document.getElementById("table-body");
+                tbody.innerHTML=tbody.innerHTML+rowhtml;
+
+                reindex();
+            }
+        });
+        //nút nhập lại
+        btnReset.addEventListener("click",function(){
+                document.getElementById("name").value="";
+                document.getElementById("email").value="";
+                document.getElementById("phone").value = "";
+                document.getElementById("dob").value = "";
+                document.getElementById("course").value = "";
+            let errors=document.querySelectorAll(".error");
+            errors.forEach(e=>e.style.display="none");
+
+
+        });//đánh lại số từ đầu nếu có dòng tĩnh
+        reindex();
+    });
+        //hàm xóa dòng
+        function deleteRow(btn){
+            if(confirm("Bạn có chắc chắn muốn hủy đắng kí khóa học này?")){
+                let row=btn.parentElement.parentElement;
+                row.remove();
+                reindex();
+            }
+        }
+
+        //hàm đánh lại số thứ tự
+        function reindex(){
+            let rows=document.querySelectorAll("#table-body tr");
+            rows.forEach((row, index)=>{
+                row.cells[0].innerText=index+1;
+            });
+        }
+                 
+        
+    </script>
+      
+</body>
+</html>

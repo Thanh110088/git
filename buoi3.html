@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+   <script language="javascript">
+    function sosanh(){
+            var a=parseInt(document.getElementById("so1").value);
+            var b=parseInt(document.getElementById("so2").value);
+            if(isNaN(a)||isNaN(b)){
+                document.getElementById("ketqua").innerHTML="lỗi";
+            }else if(a>b){
+                document.getElementById("ketqua").innerHTML=a;
+            }else if(a==b){
+                document.getElementById("ketqua").innerHTML="BẰng nhau";
+            }else{
+                document.getElementById("ketqua").innerHTML= b;
+            }       
+    }   
+   </script> 
+</head>
+<body>
+    <form method="POST" action="">
+        Số 1<input name="so1" id="so1" value=""/><br/>
+        Số 2<input name="so2" id="so2" value=""/><br/>
+        <input name="sosanh1" id="sosanh1" type="button" onclick="sosanh();" value="sosanh1"/><br/>
+    
+        <label>Tổng của hai số là :</label><label id="ketqua">0</label><br/>
+        
+
+    </form>
+</body>
+</html>
+nhập vào hai số hiển thị xem số nào là số lớn hơn chú ý :kiểm tra dữ liệu nhập vào không phải kiểu số
